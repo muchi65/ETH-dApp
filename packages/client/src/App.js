@@ -26,15 +26,11 @@ const App = () => {
   const chainId = 80001; // Mumbai
 
   const changeNetwork = async () => {
-    try {
-      if (window.ethereum) {
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: Web3.utils.toHex(chainId) }],
-        });
-      }
-    } catch (error) {
-      console.log(error);
+    if (window.ethereum) {
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: Web3.utils.toHex(chainId) }],
+      });
     }
   }
 
